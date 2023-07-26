@@ -12,9 +12,9 @@ from google import Google
 search_engine = Google(num_results=20, sleep_interval=5, timeout=10)
 
 # Return top urls for a given search.
-search_engine.search('github')
+urls = search_engine.search('github')
 
 # Return request reponses for top urls.
-search_engine.advanced_search('github')
+responses = search_engine.advanced_search('github')
 
 ```
