@@ -47,7 +47,6 @@ class Google:
         """ Search Google for the given term and return the returned url's."""
         escaped_term = urllib.parse.quote_plus(term) # make 'site:xxx.xxx.xxx ' works.
 
-        # Fetch
         results = []
         start = 0
         while start < self.num_results:
@@ -77,8 +76,8 @@ class Google:
         return results
 
     def advanced_search(self, term: str):
-        """ Search Google for the given term and return request responses for the returned url's."""
+        """ Search Google for the given term and yield request responses for the returned url's."""
         urls = self.search(term)
-        responses = [requests.get(url, headers={"User-Agent": self._get_useragent()}, timeout=self.timeout) for url in urls]
-        
-        return responses
+
+        for url in urls:
+            yield requests.get(url, headers={"User-Agent": self._get_useragent()}, timeout=self.timeout)
