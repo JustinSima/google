@@ -45,7 +45,7 @@ class Google:
     
     def search(self, term: str):
         """ Search Google for the given term and return the returned url's."""
-        escaped_term = urllib.parse.quote_plus(term) # make 'site:xxx.xxx.xxx ' works.
+        escaped_term = urllib.parse.quote_plus(term)
 
         results = []
         start = 0
